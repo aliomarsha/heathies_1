@@ -1,0 +1,28 @@
+{
+  "model_version": "PLUMBING-TEST-0 (random synthetic data, not a model)",
+  "target_definition": "NONE - synthetic random labels for integration testing only",
+  "threshold_version": "plumbing-thr-0",
+  "pipeline_file": "fitted_pipeline.joblib",
+  "feature_order": [
+    "age_years",
+    "family_history_maternal",
+    "family_history_paternal",
+    "menarche_age_group",
+    "menopause_status",
+    "hormone_therapy",
+    "first_birth_age_group",
+    "symptom_lump",
+    "symptom_nipple_discharge",
+    "symptom_skin_change",
+    "symptom_nipple_change",
+    "symptom_shape_change",
+    "symptom_persistent_pain"
+  ],
+  "positive_class_index": 1,
+  "unknown_encoding": "nan",
+  "band_thresholds": {
+    "intermediate": 0.45,
+    "higher": 0.55
+  },
+  "escalation_threshold": 0.55
+}

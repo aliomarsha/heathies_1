@@ -1,0 +1,24 @@
+{
+  "contract_version": "1.0",
+  "assessment_id": "AS-3F9A1C02B7",
+  "schema_version": "survey-v0.1-provisional",
+  "submitted_at": "2026-10-10T09:30:00",
+  "features": {
+    "age_years": 52.0,
+    "symptom_lump": 0,
+    "symptom_nipple_discharge": 0,
+    "symptom_skin_change": 0,
+    "symptom_nipple_change": 0,
+    "symptom_shape_change": 0,
+    "symptom_persistent_pain": 0,
+    "family_history_maternal": "yes",
+    "family_history_paternal": "unknown",
+    "menarche_age_group": "12_13",
+    "menopause_status": "post",
+    "hormone_therapy": "never",
+    "first_birth_age_group": "under_30"
+  },
+  "unknown_features": [
+    "family_history_paternal"
+  ]
+}

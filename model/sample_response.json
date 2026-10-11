@@ -1,0 +1,11 @@
+{
+  "model_version": "healthies-lr-0.1",
+  "target_definition": "<exact dataset outcome and timing>",
+  "score": 0.0712,
+  "band": "lower",
+  "review_flag": false,
+  "reason_codes": [
+    "SOME_INPUTS_UNKNOWN"
+  ],
+  "threshold_version": "thr-0.1-provisional"
+}
