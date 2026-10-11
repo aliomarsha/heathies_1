@@ -1,0 +1,1046 @@
+{
+  "schema_version": "survey-v0.1-provisional",
+  "status": "provisional",
+  "editor_note": "PROVISIONAL wording. Jad finalises text after Mohammad's feature dictionary and Wassim's confirmed inputs, and after clinical review. Question IDs are the stable contract with the model - do not rename an ID without telling Wassim. 'group' says how an answer is used: model_input (sent to the model), action_policy (used by the reviewed action rules), navigation (practical help only). 'model_feature' is the field name in the model request. Group 'risk_profile' = optional questions used only for the educational long-term risk profile (sent de-identified to the external LLM when HEALTHIES_RISK_BACKEND=dr7); never model or policy inputs.",
+  "unknown_value": "unknown",
+  "sections": [
+    {
+      "id": "about",
+      "title": {
+        "en": "About you",
+        "ar": "معلومات عنكِ"
+      },
+      "questions": [
+        {
+          "id": "q_age",
+          "type": "number",
+          "group": "model_input",
+          "policy_use": true,
+          "model_feature": "age_years",
+          "required": true,
+          "critical": true,
+          "min": 18,
+          "max": 100,
+          "title": {
+            "en": "How old are you?",
+            "ar": "كم عمركِ؟"
+          },
+          "help": {
+            "en": "In years.",
+            "ar": "بالسنوات."
+          },
+          "unknown_label": {
+            "en": "I prefer not to say",
+            "ar": "أفضّل عدم الإجابة"
+          }
+        },
+        {
+          "id": "q_governorate",
+          "type": "single",
+          "group": "navigation",
+          "required": true,
+          "title": {
+            "en": "Where would you prefer to be seen?",
+            "ar": "أين تفضّلين أن تتلقّي الخدمة؟"
+          },
+          "help": {
+            "en": "We use this to show nearby hospitals.",
+            "ar": "نستخدم ذلك لعرض المستشفيات القريبة منكِ."
+          },
+          "options": [
+            {
+              "value": "beirut",
+              "label": {
+                "en": "Beirut",
+                "ar": "بيروت"
+              }
+            },
+            {
+              "value": "mount_lebanon",
+              "label": {
+                "en": "Mount Lebanon",
+                "ar": "جبل لبنان"
+              }
+            },
+            {
+              "value": "north",
+              "label": {
+                "en": "North",
+                "ar": "الشمال"
+              }
+            },
+            {
+              "value": "akkar",
+              "label": {
+                "en": "Akkar",
+                "ar": "عكار"
+              }
+            },
+            {
+              "value": "bekaa",
+              "label": {
+                "en": "Bekaa",
+                "ar": "البقاع"
+              }
+            },
+            {
+              "value": "baalbek_hermel",
+              "label": {
+                "en": "Baalbek-Hermel",
+                "ar": "بعلبك الهرمل"
+              }
+            },
+            {
+              "value": "south",
+              "label": {
+                "en": "South",
+                "ar": "الجنوب"
+              }
+            },
+            {
+              "value": "nabatieh",
+              "label": {
+                "en": "Nabatieh",
+                "ar": "النبطية"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "title": {
+        "en": "Breast changes",
+        "ar": "تغيّرات في الثدي"
+      },
+      "intro": {
+        "en": "These questions help us find the right next step. There are no wrong answers.",
+        "ar": "تساعدنا هذه الأسئلة على تحديد الخطوة التالية المناسبة. لا توجد إجابات خاطئة."
+      },
+      "questions": [
+        {
+          "id": "q_symptoms",
+          "type": "multi",
+          "group": "model_input",
+          "policy_use": true,
+          "model_feature": "symptom",
+          "encoding": "multi_hot",
+          "required": true,
+          "critical": true,
+          "title": {
+            "en": "In the last 3 months, have you noticed any of these?",
+            "ar": "خلال الأشهر الثلاثة الماضية، هل لاحظتِ أيًّا ممّا يلي؟"
+          },
+          "help": {
+            "en": "Choose all that apply.",
+            "ar": "اختاري كل ما ينطبق."
+          },
+          "options": [
+            {
+              "value": "lump",
+              "concerning": true,
+              "label": {
+                "en": "A new lump or thickening in the breast or armpit",
+                "ar": "كتلة أو سماكة جديدة في الثدي أو تحت الإبط"
+              }
+            },
+            {
+              "value": "nipple_discharge",
+              "concerning": true,
+              "label": {
+                "en": "Fluid or blood coming from the nipple",
+                "ar": "خروج سائل أو دم من الحلمة"
+              }
+            },
+            {
+              "value": "skin_change",
+              "concerning": true,
+              "label": {
+                "en": "Skin changes such as dimpling, redness or a rash",
+                "ar": "تغيّرات في الجلد مثل التنقّر أو الاحمرار أو الطفح"
+              }
+            },
+            {
+              "value": "nipple_change",
+              "concerning": true,
+              "label": {
+                "en": "A nipple that has newly turned inward or changed shape",
+                "ar": "حلمة انقلبت إلى الداخل حديثًا أو تغيّر شكلها"
+              }
+            },
+            {
+              "value": "shape_change",
+              "concerning": true,
+              "label": {
+                "en": "A change in the size or shape of a breast",
+                "ar": "تغيّر في حجم الثدي أو شكله"
+              }
+            },
+            {
+              "value": "persistent_pain",
+              "concerning": true,
+              "label": {
+                "en": "Pain in one area that does not go away",
+                "ar": "ألم في منطقة واحدة لا يزول"
+              }
+            },
+            {
+              "value": "none",
+              "exclusive": true,
+              "label": {
+                "en": "None of these",
+                "ar": "لا شيء ممّا سبق"
+              }
+            },
+            {
+              "value": "unknown",
+              "exclusive": true,
+              "label": {
+                "en": "I'm not sure",
+                "ar": "لستُ متأكدة"
+              }
+            }
+          ]
+        },
+        {
+          "id": "q_symptom_duration",
+          "type": "single",
+          "group": "action_policy",
+          "required": true,
+          "show_if": {
+            "question": "q_symptoms",
+            "any_of": [
+              "lump",
+              "nipple_discharge",
+              "skin_change",
+              "nipple_change",
+              "shape_change",
+              "persistent_pain"
+            ]
+          },
+          "title": {
+            "en": "Has a doctor already checked this change?",
+            "ar": "هل فحص طبيب هذا التغيّر من قبل؟"
+          },
+          "options": [
+            {
+              "value": "not_checked",
+              "label": {
+                "en": "No, not yet",
+                "ar": "لا، ليس بعد"
+              }
+            },
+            {
+              "value": "checked_waiting",
+              "label": {
+                "en": "Yes, and I'm waiting for tests or results",
+                "ar": "نعم، وأنتظر فحوصات أو نتائج"
+              }
+            },
+            {
+              "value": "checked_done",
+              "label": {
+                "en": "Yes, and I was told it's fine",
+                "ar": "نعم، وقيل لي إنّه لا يدعو للقلق"
+              }
+            },
+            {
+              "value": "unknown",
+              "label": {
+                "en": "I'm not sure",
+                "ar": "لستُ متأكدة"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "history",
+      "title": {
+        "en": "Your health history",
+        "ar": "تاريخكِ الصحي"
+      },
+      "questions": [
+        {
+          "id": "q_personal_history",
+          "type": "single",
+          "group": "action_policy",
+          "required": true,
+          "critical": true,
+          "title": {
+            "en": "Have you ever been diagnosed with breast cancer?",
+            "ar": "هل سبق أن شُخّصتِ بسرطان الثدي؟"
+          },
+          "options": [
+            {
+              "value": "yes",
+              "label": {
+                "en": "Yes",
+                "ar": "نعم"
+              }
+            },
+            {
+              "value": "no",
+              "label": {
+                "en": "No",
+                "ar": "لا"
+              }
+            },
+            {
+              "value": "unknown",
+              "label": {
+                "en": "I'm not sure",
+                "ar": "لستُ متأكدة"
+              }
+            }
+          ]
+        },
+        {
+          "id": "q_family_maternal",
+          "type": "single",
+          "group": "model_input",
+          "model_feature": "family_history_maternal",
+          "required": true,
+          "title": {
+            "en": "Has anyone on your mother's side had breast or ovarian cancer?",
+            "ar": "هل أُصيب أحد من أقارب والدتكِ بسرطان الثدي أو المبيض؟"
+          },
+          "help": {
+            "en": "For example your mother, sister, daughter, grandmother or aunt.",
+            "ar": "مثل الأم أو الأخت أو الابنة أو الجدّة أو الخالة."
+          },
+          "options": [
+            {
+              "value": "yes",
+              "label": {
+                "en": "Yes",
+                "ar": "نعم"
+              }
+            },
+            {
+              "value": "no",
+              "label": {
+                "en": "No",
+                "ar": "لا"
+              }
+            },
+            {
+              "value": "unknown",
+              "label": {
+                "en": "I don't know",
+                "ar": "لا أعرف"
+              }
+            }
+          ]
+        },
+        {
+          "id": "q_family_paternal",
+          "type": "single",
+          "group": "model_input",
+          "model_feature": "family_history_paternal",
+          "required": true,
+          "title": {
+            "en": "Has anyone on your father's side had breast or ovarian cancer?",
+            "ar": "هل أُصيب أحد من أقارب والدكِ بسرطان الثدي أو المبيض؟"
+          },
+          "help": {
+            "en": "For example your grandmother, aunt or a male relative with breast cancer.",
+            "ar": "مثل الجدّة أو العمّة أو قريب ذكر أُصيب بسرطان الثدي."
+          },
+          "options": [
+            {
+              "value": "yes",
+              "label": {
+                "en": "Yes",
+                "ar": "نعم"
+              }
+            },
+            {
+              "value": "no",
+              "label": {
+                "en": "No",
+                "ar": "لا"
+              }
+            },
+            {
+              "value": "unknown",
+              "label": {
+                "en": "I don't know",
+                "ar": "لا أعرف"
+              }
+            }
+          ]
+        },
+        {
+          "id": "q_surveillance_plan",
+          "type": "single",
+          "group": "action_policy",
+          "required": true,
+          "title": {
+            "en": "Has a doctor told you that you need a special breast check plan?",
+            "ar": "هل أخبركِ طبيب أنّكِ تحتاجين إلى خطة خاصة لفحص الثدي؟"
+          },
+          "help": {
+            "en": "For example because of a gene result such as BRCA, or past chest radiation.",
+            "ar": "مثلًا بسبب نتيجة فحص جيني مثل BRCA، أو علاج إشعاعي سابق للصدر."
+          },
+          "options": [
+            {
+              "value": "yes",
+              "label": {
+                "en": "Yes",
+                "ar": "نعم"
+              }
+            },
+            {
+              "value": "no",
+              "label": {
+                "en": "No",
+                "ar": "لا"
+              }
+            },
+            {
+              "value": "unknown",
+              "label": {
+                "en": "I'm not sure",
+                "ar": "لستُ متأكدة"
+              }
+            }
+          ]
+        },
+        {
+          "id": "q_menarche",
+          "type": "single",
+          "group": "model_input",
+          "model_feature": "menarche_age_group",
+          "required": true,
+          "title": {
+            "en": "How old were you when you had your first period?",
+            "ar": "كم كان عمركِ عند أول دورة شهرية؟"
+          },
+          "options": [
+            {
+              "value": "under_12",
+              "label": {
+                "en": "Younger than 12",
+                "ar": "أقل من 12 سنة"
+              }
+            },
+            {
+              "value": "12_13",
+              "label": {
+                "en": "12 or 13",
+                "ar": "12 أو 13 سنة"
+              }
+            },
+            {
+              "value": "14_plus",
+              "label": {
+                "en": "14 or older",
+                "ar": "14 سنة أو أكثر"
+              }
+            },
+            {
+              "value": "unknown",
+              "label": {
+                "en": "I don't remember",
+                "ar": "لا أتذكّر"
+              }
+            }
+          ]
+        },
+        {
+          "id": "q_menopause",
+          "type": "single",
+          "group": "model_input",
+          "model_feature": "menopause_status",
+          "required": true,
+          "title": {
+            "en": "Have your periods stopped?",
+            "ar": "هل توقّفت الدورة الشهرية لديكِ؟"
+          },
+          "options": [
+            {
+              "value": "pre",
+              "label": {
+                "en": "No, I still have periods",
+                "ar": "لا، ما زالت تأتيني"
+              }
+            },
+            {
+              "value": "peri",
+              "label": {
+                "en": "They are becoming irregular",
+                "ar": "أصبحت غير منتظمة"
+              }
+            },
+            {
+              "value": "post",
+              "label": {
+                "en": "Yes, for 12 months or more",
+                "ar": "نعم، منذ 12 شهرًا أو أكثر"
+              }
+            },
+            {
+              "value": "unknown",
+              "label": {
+                "en": "I'm not sure",
+                "ar": "لستُ متأكدة"
+              }
+            }
+          ]
+        },
+        {
+          "id": "q_hormone_therapy",
+          "type": "single",
+          "group": "model_input",
+          "model_feature": "hormone_therapy",
+          "required": true,
+          "show_if": {
+            "question": "q_menopause",
+            "any_of": [
+              "peri",
+              "post"
+            ]
+          },
+          "title": {
+            "en": "Have you taken hormone therapy for menopause?",
+            "ar": "هل تناولتِ علاجًا هرمونيًا لأعراض انقطاع الطمث؟"
+          },
+          "options": [
+            {
+              "value": "current",
+              "label": {
+                "en": "Yes, I take it now",
+                "ar": "نعم، أتناوله حاليًا"
+              }
+            },
+            {
+              "value": "past",
+              "label": {
+                "en": "Yes, in the past",
+                "ar": "نعم، في السابق"
+              }
+            },
+            {
+              "value": "never",
+              "label": {
+                "en": "No, never",
+                "ar": "لا، أبدًا"
+              }
+            },
+            {
+              "value": "unknown",
+              "label": {
+                "en": "I'm not sure",
+                "ar": "لستُ متأكدة"
+              }
+            }
+          ]
+        },
+        {
+          "id": "q_first_birth",
+          "type": "single",
+          "group": "model_input",
+          "model_feature": "first_birth_age_group",
+          "required": true,
+          "title": {
+            "en": "How old were you when you first gave birth?",
+            "ar": "كم كان عمركِ عند أول ولادة؟"
+          },
+          "options": [
+            {
+              "value": "no_births",
+              "label": {
+                "en": "I have not given birth",
+                "ar": "لم أُنجب"
+              }
+            },
+            {
+              "value": "under_30",
+              "label": {
+                "en": "Younger than 30",
+                "ar": "أقل من 30 سنة"
+              }
+            },
+            {
+              "value": "30_plus",
+              "label": {
+                "en": "30 or older",
+                "ar": "30 سنة أو أكثر"
+              }
+            },
+            {
+              "value": "unknown",
+              "label": {
+                "en": "I prefer not to say",
+                "ar": "أفضّل عدم الإجابة"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "screening",
+      "title": {
+        "en": "Screening so far",
+        "ar": "الفحوصات السابقة"
+      },
+      "questions": [
+        {
+          "id": "q_last_mammogram",
+          "type": "single",
+          "group": "action_policy",
+          "required": true,
+          "title": {
+            "en": "When was your last mammogram?",
+            "ar": "متى أجريتِ آخر صورة للثدي (ماموغرام)؟"
+          },
+          "options": [
+            {
+              "value": "under_1y",
+              "label": {
+                "en": "Less than a year ago",
+                "ar": "منذ أقل من سنة"
+              }
+            },
+            {
+              "value": "1_2y",
+              "label": {
+                "en": "1 to 2 years ago",
+                "ar": "منذ سنة إلى سنتين"
+              }
+            },
+            {
+              "value": "over_2y",
+              "label": {
+                "en": "More than 2 years ago",
+                "ar": "منذ أكثر من سنتين"
+              }
+            },
+            {
+              "value": "never",
+              "label": {
+                "en": "I have never had one",
+                "ar": "لم أُجرِ واحدة أبدًا"
+              }
+            },
+            {
+              "value": "unknown",
+              "label": {
+                "en": "I don't remember",
+                "ar": "لا أتذكّر"
+              }
+            }
+          ]
+        },
+        {
+          "id": "q_unresolved",
+          "type": "single",
+          "group": "action_policy",
+          "required": true,
+          "critical": true,
+          "title": {
+            "en": "Were you asked to come back for more tests after a breast check, and haven't gone yet?",
+            "ar": "هل طُلب منكِ العودة لإجراء فحوصات إضافية بعد فحص للثدي ولم تذهبي بعد؟"
+          },
+          "options": [
+            {
+              "value": "yes",
+              "label": {
+                "en": "Yes",
+                "ar": "نعم"
+              }
+            },
+            {
+              "value": "no",
+              "label": {
+                "en": "No",
+                "ar": "لا"
+              }
+            },
+            {
+              "value": "unknown",
+              "label": {
+                "en": "I'm not sure",
+                "ar": "لستُ متأكدة"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lifestyle",
+      "title": {
+        "en": "Health and daily habits",
+        "ar": "الصحة والعادات اليومية"
+      },
+      "intro": {
+        "en": "Optional. These answers describe your long-term risk factors. They do not change your next step.",
+        "ar": "اختياري. تصف هذه الإجابات عوامل الخطر على المدى الطويل، ولا تغيّر خطوتكِ التالية."
+      },
+      "questions": [
+        {
+          "id": "q_breastfeeding",
+          "type": "single",
+          "group": "risk_profile",
+          "required": false,
+          "show_if": {
+            "question": "q_first_birth",
+            "any_of": [
+              "under_30",
+              "30_plus"
+            ]
+          },
+          "title": {
+            "en": "Did you breastfeed your children?",
+            "ar": "هل أرضعتِ أطفالكِ رضاعة طبيعية؟"
+          },
+          "options": [
+            {
+              "value": "yes_12m",
+              "label": {
+                "en": "Yes, for a year or more in total",
+                "ar": "نعم، لسنة أو أكثر بالمجمل"
+              }
+            },
+            {
+              "value": "yes_less",
+              "label": {
+                "en": "Yes, for less than a year in total",
+                "ar": "نعم، لأقل من سنة بالمجمل"
+              }
+            },
+            {
+              "value": "no",
+              "label": {
+                "en": "No",
+                "ar": "لا"
+              }
+            },
+            {
+              "value": "unknown",
+              "label": {
+                "en": "I prefer not to say",
+                "ar": "أفضّل عدم الإجابة"
+              }
+            }
+          ]
+        },
+        {
+          "id": "q_dense_breasts",
+          "type": "single",
+          "group": "risk_profile",
+          "required": false,
+          "title": {
+            "en": "Has a doctor told you that you have dense breast tissue?",
+            "ar": "هل أخبركِ طبيب أنّ أنسجة ثديكِ كثيفة؟"
+          },
+          "options": [
+            {
+              "value": "yes",
+              "label": {
+                "en": "Yes",
+                "ar": "نعم"
+              }
+            },
+            {
+              "value": "no",
+              "label": {
+                "en": "No",
+                "ar": "لا"
+              }
+            },
+            {
+              "value": "unknown",
+              "label": {
+                "en": "I don't know",
+                "ar": "لا أعرف"
+              }
+            }
+          ]
+        },
+        {
+          "id": "q_alcohol",
+          "type": "single",
+          "group": "risk_profile",
+          "required": false,
+          "title": {
+            "en": "How often do you drink alcohol?",
+            "ar": "كم مرة تشربين الكحول؟"
+          },
+          "options": [
+            {
+              "value": "never",
+              "label": {
+                "en": "Never",
+                "ar": "أبدًا"
+              }
+            },
+            {
+              "value": "occasional",
+              "label": {
+                "en": "Less than once a week",
+                "ar": "أقل من مرة في الأسبوع"
+              }
+            },
+            {
+              "value": "weekly",
+              "label": {
+                "en": "1 to 6 drinks a week",
+                "ar": "من 1 إلى 6 مشروبات في الأسبوع"
+              }
+            },
+            {
+              "value": "daily",
+              "label": {
+                "en": "7 or more drinks a week",
+                "ar": "7 مشروبات أو أكثر في الأسبوع"
+              }
+            },
+            {
+              "value": "unknown",
+              "label": {
+                "en": "I prefer not to say",
+                "ar": "أفضّل عدم الإجابة"
+              }
+            }
+          ]
+        },
+        {
+          "id": "q_activity",
+          "type": "single",
+          "group": "risk_profile",
+          "required": false,
+          "title": {
+            "en": "On how many days a week are you active for at least 30 minutes?",
+            "ar": "كم يومًا في الأسبوع تمارسين نشاطًا بدنيًا لمدة 30 دقيقة على الأقل؟"
+          },
+          "help": {
+            "en": "For example brisk walking, housework that makes you breathe faster, or sport.",
+            "ar": "مثل المشي السريع أو الأعمال المنزلية التي تسرّع التنفّس أو الرياضة."
+          },
+          "options": [
+            {
+              "value": "none",
+              "label": {
+                "en": "Rarely or never",
+                "ar": "نادرًا أو أبدًا"
+              }
+            },
+            {
+              "value": "low",
+              "label": {
+                "en": "1 or 2 days",
+                "ar": "يوم أو يومان"
+              }
+            },
+            {
+              "value": "mid",
+              "label": {
+                "en": "3 or 4 days",
+                "ar": "3 أو 4 أيام"
+              }
+            },
+            {
+              "value": "high",
+              "label": {
+                "en": "5 days or more",
+                "ar": "5 أيام أو أكثر"
+              }
+            },
+            {
+              "value": "unknown",
+              "label": {
+                "en": "I'm not sure",
+                "ar": "لستُ متأكدة"
+              }
+            }
+          ]
+        },
+        {
+          "id": "q_smoking",
+          "type": "single",
+          "group": "risk_profile",
+          "required": false,
+          "title": {
+            "en": "Do you smoke cigarettes or argileh (nargile)?",
+            "ar": "هل تدخّنين السجائر أو النرجيلة؟"
+          },
+          "options": [
+            {
+              "value": "current",
+              "label": {
+                "en": "Yes, I smoke now",
+                "ar": "نعم، أدخّن حاليًا"
+              }
+            },
+            {
+              "value": "past",
+              "label": {
+                "en": "I used to smoke",
+                "ar": "كنتُ أدخّن سابقًا"
+              }
+            },
+            {
+              "value": "never",
+              "label": {
+                "en": "No, never",
+                "ar": "لا، أبدًا"
+              }
+            },
+            {
+              "value": "unknown",
+              "label": {
+                "en": "I prefer not to say",
+                "ar": "أفضّل عدم الإجابة"
+              }
+            }
+          ]
+        },
+        {
+          "id": "q_weight",
+          "type": "single",
+          "group": "risk_profile",
+          "required": false,
+          "show_if": {
+            "question": "q_menopause",
+            "any_of": [
+              "post"
+            ]
+          },
+          "title": {
+            "en": "Have you gained a lot of weight since your periods stopped?",
+            "ar": "هل زاد وزنكِ كثيرًا منذ توقّف الدورة الشهرية؟"
+          },
+          "options": [
+            {
+              "value": "yes",
+              "label": {
+                "en": "Yes",
+                "ar": "نعم"
+              }
+            },
+            {
+              "value": "no",
+              "label": {
+                "en": "No",
+                "ar": "لا"
+              }
+            },
+            {
+              "value": "unknown",
+              "label": {
+                "en": "I'm not sure",
+                "ar": "لستُ متأكدة"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "practical",
+      "title": {
+        "en": "Getting to your appointment",
+        "ar": "الوصول إلى موعدكِ"
+      },
+      "intro": {
+        "en": "Tell us what might make it hard, so we can help.",
+        "ar": "أخبرينا بما قد يصعّب الأمر عليكِ لنتمكّن من المساعدة."
+      },
+      "questions": [
+        {
+          "id": "q_barriers",
+          "type": "multi",
+          "group": "navigation",
+          "required": true,
+          "title": {
+            "en": "What could make it difficult to attend?",
+            "ar": "ما الذي قد يصعّب عليكِ الحضور؟"
+          },
+          "help": {
+            "en": "Choose all that apply.",
+            "ar": "اختاري كل ما ينطبق."
+          },
+          "options": [
+            {
+              "value": "transport",
+              "label": {
+                "en": "Transport or distance",
+                "ar": "المواصلات أو المسافة"
+              }
+            },
+            {
+              "value": "cost",
+              "label": {
+                "en": "Cost",
+                "ar": "الكلفة"
+              }
+            },
+            {
+              "value": "worry",
+              "label": {
+                "en": "Worry about the test or the result",
+                "ar": "القلق من الفحص أو النتيجة"
+              }
+            },
+            {
+              "value": "time",
+              "label": {
+                "en": "Work, family or caring duties",
+                "ar": "العمل أو العائلة أو رعاية الآخرين"
+              }
+            },
+            {
+              "value": "where",
+              "label": {
+                "en": "Not knowing where to go",
+                "ar": "عدم معرفة إلى أين أذهب"
+              }
+            },
+            {
+              "value": "companion",
+              "label": {
+                "en": "I need someone to come with me",
+                "ar": "أحتاج إلى من يرافقني"
+              }
+            },
+            {
+              "value": "none",
+              "exclusive": true,
+              "label": {
+                "en": "Nothing right now",
+                "ar": "لا شيء حاليًا"
+              }
+            },
+            {
+              "value": "prefer_not",
+              "exclusive": true,
+              "label": {
+                "en": "I prefer not to say",
+                "ar": "أفضّل عدم الإجابة"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "free_text": {
+    "id": "free_text",
+    "group": "staff_review_only",
+    "title": {
+      "en": "Is there anything else about breast changes or difficulties attending an appointment that you would like the care team to know?",
+      "ar": "هل هناك أي شيء آخر عن تغيّرات في الثدي أو صعوبات في حضور الموعد تودّين أن يعرفه فريق الرعاية؟"
+    },
+    "help": {
+      "en": "Optional. A member of the care team reads this. It does not change your result automatically.",
+      "ar": "اختياري. يقرأ أحد أعضاء فريق الرعاية هذه الإجابة، ولا تغيّر نتيجتكِ تلقائيًا."
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "policy_version": "action-policy-v0.1-provisional",
+  "status": "PROVISIONAL - requires review by the team's clinical mentor before any real use. Values below are placeholders the team must confirm; they are not an approved clinical protocol.",
+  "screening_plan": {
+    "campaign_min_age": 40,
+    "_campaign_min_age_source": "MoPH 2026 campaign text cited in the handbook (mammography for Lebanese women over 40). Confirm with clinical mentor.",
+    "recent_mammogram_values": ["under_1y"],
+    "_recent_mammogram_note": "Answers treated as 'recently screened'. Interval must be confirmed clinically."
+  },
+  "critical_questions": ["q_age", "q_symptoms", "q_personal_history", "q_unresolved"],
+  "higher_band_triggers_clinician_review": true,
+  "model_failure_creates_staff_review": true,
+  "services": {
+    "routine_screening": "screening_mammogram",
+    "clinical_assessment": "clinical_assessment",
+    "plan_review": "plan_review",
+    "clarification": "clarification_call",
+    "recently_screened": "none"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "editor_note": "Hospital names are Lebanese governmental hospitals. Services, cost/coverage and phone numbers are NOT verified yet (task J3 - Jad). Keep info_verified=false and cost_status='unknown' until confirmed from an official source. Availability slots are SIMULATED for the demo. The MoPH 2026 campaign page (source_url) lists 1214 for centre inquiries.",
+  "hospitals": [
+    {
+      "slug": "rhuh",
+      "name_en": "Rafik Hariri University Hospital",
+      "name_ar": "مستشفى رفيق الحريري الجامعي",
+      "sector": "governmental",
+      "governorate": "beirut",
+      "district": "Jnah",
+      "services": ["screening_mammogram", "clinical_assessment", "plan_review"],
+      "cost_status": "unknown",
+      "is_demo_partner": true,
+      "demo_slots": ["Mon 09:00", "Mon 11:00", "Wed 10:00", "Thu 13:00"]
+    },
+    {
+      "slug": "baabda",
+      "name_en": "Baabda Governmental University Hospital",
+      "name_ar": "مستشفى بعبدا الحكومي الجامعي",
+      "sector": "governmental",
+      "governorate": "mount_lebanon",
+      "district": "Baabda",
+      "services": ["screening_mammogram", "clinical_assessment"],
+      "cost_status": "unknown",
+      "is_demo_partner": true,
+      "demo_slots": ["Tue 09:30", "Thu 10:30"]
+    },
+    {
+      "slug": "tripoli",
+      "name_en": "Tripoli Governmental Hospital",
+      "name_ar": "مستشفى طرابلس الحكومي",
+      "sector": "governmental",
+      "governorate": "north",
+      "district": "Tripoli",
+      "services": ["screening_mammogram", "clinical_assessment"],
+      "cost_status": "unknown",
+      "demo_slots": ["Mon 10:00", "Wed 12:00"]
+    },
+    {
+      "slug": "halba",
+      "name_en": "Halba Governmental Hospital",
+      "name_ar": "مستشفى حلبا الحكومي",
+      "sector": "governmental",
+      "governorate": "akkar",
+      "district": "Halba",
+      "services": ["screening_mammogram"],
+      "cost_status": "unknown",
+      "demo_slots": ["Tue 11:00"]
+    },
+    {
+      "slug": "zahle",
+      "name_en": "Elias Hraoui Governmental Hospital, Zahle",
+      "name_ar": "مستشفى الياس الهراوي الحكومي - زحلة",
+      "sector": "governmental",
+      "governorate": "bekaa",
+      "district": "Zahle",
+      "services": ["screening_mammogram", "clinical_assessment"],
+      "cost_status": "unknown",
+      "demo_slots": ["Wed 09:00", "Fri 10:00"]
+    },
+    {
+      "slug": "baalbek",
+      "name_en": "Baalbek Governmental Hospital",
+      "name_ar": "مستشفى بعلبك الحكومي",
+      "sector": "governmental",
+      "governorate": "baalbek_hermel",
+      "district": "Baalbek",
+      "services": ["screening_mammogram"],
+      "cost_status": "unknown",
+      "demo_slots": ["Thu 09:00"]
+    },
+    {
+      "slug": "saida",
+      "name_en": "Saida Governmental Hospital",
+      "name_ar": "مستشفى صيدا الحكومي",
+      "sector": "governmental",
+      "governorate": "south",
+      "district": "Saida",
+      "services": ["screening_mammogram", "clinical_assessment"],
+      "cost_status": "unknown",
+      "demo_slots": ["Mon 12:00", "Thu 11:00"]
+    },
+    {
+      "slug": "nabatieh",
+      "name_en": "Nabih Berri Governmental University Hospital, Nabatieh",
+      "name_ar": "مستشفى نبيه بري الجامعي الحكومي - النبطية",
+      "sector": "governmental",
+      "governorate": "nabatieh",
+      "district": "Nabatieh",
+      "services": ["screening_mammogram", "clinical_assessment"],
+      "cost_status": "unknown",
+      "demo_slots": ["Tue 10:00", "Fri 09:30"]
+    }
+  ]
+}

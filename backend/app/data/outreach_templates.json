@@ -1,0 +1,33 @@
+{
+  "editor_note": "SIMULATED SMS ONLY - no gateway is connected and no message is ever sent. Messages must never contain findings, scores or diagnoses. Wording is provisional (Jad). Timing values are demo defaults, in days.",
+  "sequence": {
+    "invitation_delay_days": 0,
+    "assessment_reminder_days": [3, 7],
+    "callback_after_days": 10,
+    "appointment_request_reminder_days": 2,
+    "confirmed_reminder_days_before": 1,
+    "missed_appointment_callback_days": 1
+  },
+  "templates": {
+    "invitation": {
+      "en": "Healthies screening campaign: you are invited to complete a short assessment. [Demo link]",
+      "ar": "حملة Healthies للكشف المبكر: ندعوكِ لإكمال تقييم قصير. [رابط تجريبي]"
+    },
+    "assessment_reminder": {
+      "en": "Your assessment is still pending. Complete it or request help. [Demo link]",
+      "ar": "تقييمكِ ما زال غير مكتمل. أكمليه أو اطلبي المساعدة. [رابط تجريبي]"
+    },
+    "appointment_request_reminder": {
+      "en": "An appointment request is pending. View your next step or ask for help. [Demo link]",
+      "ar": "لديكِ طلب موعد قيد الانتظار. اطّلعي على خطوتكِ التالية أو اطلبي المساعدة. [رابط تجريبي]"
+    },
+    "confirmed_reminder": {
+      "en": "Reminder of your confirmed appointment at {hospital} on {when}. View or reschedule. [Demo link]",
+      "ar": "تذكير بموعدكِ المؤكَّد في {hospital} بتاريخ {when}. اطّلعي عليه أو غيّري الموعد. [رابط تجريبي]"
+    },
+    "callback_task": {
+      "en": "Staff callback task: participant has not responded to reminders. No call has been made.",
+      "ar": "مهمة اتصال للفريق: لم تتجاوب المشاركة مع التذكيرات. لم يُجرَ أي اتصال."
+    }
+  }
+}
